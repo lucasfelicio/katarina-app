@@ -5,14 +5,14 @@ import styles from './styles';
 
 export default function config(){
   const navigation = useNavigation();
-  const [end_server, setServer] = useState();
-  const [id_empresa, setEmpresa] = useState();
+  const [end_server, setServer] = useState('');
+  const [id_empresa, setEmpresa] = useState('');
 
-  function salvar(){
-    // await AsyncStorage.multiSet([
-    //   ['@katarinaMobile:end_server',JSON({end_server})],
-    //   ['@katarinaMobile:id_empresa',JSON({id_empresa})],
-    // ]);
+  async function salvar(){
+    await AsyncStorage.multiSet([
+      ['@katarinaMobile:end_server',end_server],
+      ['@katarinaMobile:id_empresa',id_empresa],
+    ]);
     navigation.goBack();
   }
 
@@ -28,6 +28,7 @@ export default function config(){
                     placeholder='Ex.: 1'
                     value={id_empresa}
                     onChangeText={setEmpresa}
+                    keyboardType={'numeric'}
                 />
                 <Text style={styles.title}>Endereço do servidor da API</Text>
                 <TextInput 
@@ -35,6 +36,7 @@ export default function config(){
                     placeholder='Ex.: 192.168.0.1'
                     value={end_server}
                     onChangeText={setServer}
+                    keyboardType={'numeric'}
                 />   
                 <TouchableOpacity onPress={() => salvar()} style={styles.buttom}>
                     <Text style={styles.buttomText}>SALVAR</Text>

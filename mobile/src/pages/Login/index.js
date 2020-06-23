@@ -23,7 +23,6 @@ export default function fLogin(){
                 ['@katarinaMobile:user_name',JSON.stringify(user.user_name)],
             ]); 
             navigation.navigate('Comandas')
-            console.log('deu certo')
         } catch (error) {
             Alert.alert('Atenção',error.response.data.descricao);
         }
@@ -43,6 +42,7 @@ export default function fLogin(){
                     placeholder='Usuário'
                     value={login}
                     onChangeText={setlogin}
+                    ReturnKeyType={'next'}
                 />
                 <TextInput 
                     style={styles.input}

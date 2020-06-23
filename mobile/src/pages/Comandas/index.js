@@ -48,7 +48,7 @@ export default function Comandas() {
         }
     }
     function navigationToCategorias(){
-        abrirComanda();
+        //abrirComanda();
         navigation.navigate('Categorias',{id_venda});
     }
     useEffect(()=>{
