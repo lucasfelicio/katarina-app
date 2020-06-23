@@ -59,7 +59,7 @@ export default function Comandas() {
             <View style={styles.header}>
                 <Text style={styles.headerText}>Comandas</Text>
                 <TouchableOpacity onPress={() => navigationToCategorias()}>
-                    <Feather name="plus-circle" size={35} color={"#FBAC18"}/>
+                    <Feather name="plus-circle" size={35} color={"#FFA500"}/>
                 </TouchableOpacity>
             </View>
             <View style={styles.search}>

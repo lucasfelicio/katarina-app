@@ -1,24 +1,21 @@
 const connection = require('../database/connection');
 const timestamp = require('time-stamp');
-
 module.exports = {
     async create(request, response) {
         const id_usuario = request.headers.authorization;
         const { tipo, nro_comanda, nro_mesa, id_empresa } = request.query;
         try {
             const [id] = await connection('venda')
-                .where({
-                    'emp_001': id_empresa,
-                })
+                .where('emp_001',id_empresa)
                 .max('ven_001')
             id_venda = id['max'] + 1;
+
             const [caixa] = await connection('caixa')
                 .select('id_caixa')
-                .where({
-                    'id_empresa': id_empresa,
-                    'id_situacao':4
+                .where({'id_empresa': id_empresa,'id_situacao':4
                 });
             id_caixa = caixa['id_caixa'];
+
             await connection('venda')
                 .insert({
                     'ven_001': id_venda,
@@ -37,7 +34,12 @@ module.exports = {
                     'ven_026': nro_comanda,
                     'terminal_abertura': 'Aplicativo mobile'
                 });
-            return response.status(200).json(id_venda);
+            if (!id_venda){
+                return response.status(400).json({ descricao: 'Erro ao inserir a venda'});
+            }
+            else {
+                return response.status(200).json(id_venda);
+            }
         } catch (error) {
             return response.status(500).json({ descricao: 'Erro no servidor: ' + error })
         }
@@ -59,7 +61,7 @@ module.exports = {
             }
             const vendas = await select
             if (!vendas) {
-                return response.status(401).json({ descricao: 'Erro ao consultar vendas!' })
+                return response.status(401).json({ descricao: 'Erro ao consultar venda(s)!' })
             }
             else {
                 return response.status(200).json(vendas);

@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
 
 export default StyleSheet.create({
     botoesBox:{
@@ -10,7 +9,7 @@ export default StyleSheet.create({
         justifyContent: 'space-between'
     },
     button:{
-        backgroundColor: '#FBAC18',
+        backgroundColor: '#FFA500',
         borderRadius: 8,
         height: 45,
         width: '48%',

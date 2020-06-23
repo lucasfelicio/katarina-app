@@ -55,7 +55,7 @@ export default function fLogin(){
                     <Text style={styles.buttomText}>ENTRAR</Text>
                 </TouchableOpacity>  
                 <TouchableOpacity onPress={() => navigationToConfig()} style={styles.settings}>
-                    <Feather name="settings" size={35} color={"#FBAC18"}/>   
+                    <Feather name="settings" size={35} color={"#FFA500"}/>   
                 </TouchableOpacity> 
             </View>
             <View style={styles.rodape}>

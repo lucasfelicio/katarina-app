@@ -20,7 +20,7 @@ export default StyleSheet.create({
         height: 45,
     },
     buttom:{
-        backgroundColor: '#FBAC18',
+        backgroundColor: '#FFA500',
         borderRadius: 8,
         height: 45,
         justifyContent: 'center',

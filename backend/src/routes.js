@@ -1,13 +1,22 @@
 const express = require('express');
 const { celebrate, Segments, Joi } = require('celebrate');
+const { join } = require('./database/connection');
 
 const Session = require('./controllers/SessionController');
 const Vendas = require('./controllers/VendaController');
+const Categorias = require('./controllers/CategoriaController');
+const Produtos = require('./controllers/ProdutoController');
+const Opcionais = require('./controllers/OpcionalController')
 
 const routes = express.Router();
 
 routes.get('/sessions', Session.create);
+routes.get('/categorias', Categorias.read);
+routes.get('/produtos', Produtos.read)
+routes.get('/opcionais',Opcionais.read)
+
 routes.get('/vendas', Vendas.read);
+routes.post('/vendas', Vendas.create)
 
 
 // routes.get('/ongs', OngController.index);
