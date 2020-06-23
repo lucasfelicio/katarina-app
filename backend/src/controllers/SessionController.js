@@ -2,16 +2,15 @@ const connection = require('../database/connection');
 
 module.exports = {
     async create(request, response) {
-        const { id } = request.body;
+        const { login, senha } = request.query;
 
-        const ong = await connection('ongs').where('id', id)
-            .select('name')
+        const user = await connection('usuarios').where({'usu_003':login, 'usu_004':senha})
+            .select('usu_001 as id', 'usu_002 as user_name')
             .first();
-
-        if(!ong){
-            return response.status(400).json({ error: 'No ONG found with this ID!'});
+        
+        if(!user){
+            return response.status(400).json({ descricao: 'Usuário inexistente ou com login/senha inválidos!'});
         }
-
-        return response.json(ong);
+        return response.status(200).json(user);
     }
 }

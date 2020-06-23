@@ -1,59 +1,62 @@
-// Update with your config settings.
-
 module.exports = {
-
   development: {
-    client: 'sqlite3',
+    client: 'postgresql',
     connection: {
-      filename: './src/database/db.sqlite'
+      database: 'nortesystem',// nome do banco de dados
+      user:     'nortesystem',//usuário do banco de dados
+      password: '101485', //senha do usuário do banco de dados
+      port: 5432,//porta do serviço do banco de dados
+      host: 'localhost' //endereço do servidor do banco de dados
     },
-    migrations: {
-      directory: './src/database/migrations'
+    pool: {
+      min: 0,
+      max: 50
     },
     useNullAsDefault: true,
   },
-
   test: {
-    client: 'sqlite3',
+    client: 'postgresql',
     connection: {
-      filename: './src/database/test.sqlite'
+      database: 'nortesystem',// nome do banco de dados
+      user:     'nortesystem',//usuário do banco de dados
+      password: '101485', //senha do usuário do banco de dados
+      port: 5432,//porta do serviço do banco de dados
+      host: 'localhost' //endereço do servidor do banco de dados
     },
-    migrations: {
-      directory: './src/database/migrations'
+    pool: {
+      min: 0,
+      max: 50
     },
     useNullAsDefault: true,
   },
-
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: 'nortesystem',// nome do banco de dados
+      user:     'nortesystem',//usuário do banco de dados
+      password: '101485', //senha do usuário do banco de dados
+      port: 5432,//porta do serviço do banco de dados
+      host: 'localhost' //endereço do servidor do banco de dados
     },
     pool: {
-      min: 2,
-      max: 10
+      min: 0,
+      max: 50
     },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
+    useNullAsDefault: true,
   },
-
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: 'nortesystem',// nome do banco de dados
+      user:     'nortesystem',//usuário do banco de dados
+      password: '101485', //senha do usuário do banco de dados
+      port: 5432,//porta do serviço do banco de dados
+      host: 'localhost' //endereço do servidor do banco de dados
     },
     pool: {
-      min: 2,
-      max: 10
+      min: 0,
+      max: 50
     },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
+    useNullAsDefault: true,
   }
-
 };
