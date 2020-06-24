@@ -9,7 +9,7 @@ export default function Produtos(){
     const navigation = useNavigation();
     const route = useRoute();
     const [produtos, setProdutos] = useState();
-    const cat_id = route.params.categoria.cat_001;
+    const id_categoria = route.params.categoria.cat_001;
     const id_venda = route.params.id_venda;
 
     function navigationBack(){
@@ -19,7 +19,7 @@ export default function Produtos(){
         navigation.navigate('Venda',{produto,id_venda})
     }
     async function loadProdutos(){
-        const response = await api.get('produtos',{params:{cat_id,id_empresa:1}});
+        const response = await api.get('produtos',{params:{id_categoria,id_empresa:1}});
         setProdutos(response.data)        
     }
     useEffect(()=>{
@@ -29,7 +29,7 @@ export default function Produtos(){
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={navigationBack}>
-                    <Feather name="arrow-left" size={35} color={"#FBAC18"}/>
+                    <Feather name="arrow-left" size={35} color={"#FFA500"}/>
                 </TouchableOpacity>
                 <Text style={styles.headerText}>Voltar</Text>
             </View>
@@ -48,6 +48,7 @@ export default function Produtos(){
                                     currency: 'BRL'
                                 }).format(produto.mat_008)                               
                             }</Text>
+                            <Feather name="arrow-right" size={25} color={"#FFA500"}/>
                         </View>                        
                     </TouchableOpacity>
                 )}

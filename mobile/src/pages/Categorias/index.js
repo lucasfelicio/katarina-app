@@ -10,7 +10,6 @@ export default function Categorias(){
     const route = useRoute();
     const [categorias, setCategorias] = useState([]);
     const id_venda = route.params.id_venda;
-
     function navigationBack(){
         navigation.goBack()
     }
@@ -21,16 +20,14 @@ export default function Categorias(){
         const response = await api.get('categorias', {params:{id_empresa:1}});
         setCategorias(response.data)
     }
-
     useEffect(()=>{
         loadCategorias();
     },[])
-
     return(
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={navigationBack}>
-                    <Feather name="arrow-left" size={35} color={"#FBAC18"}/>
+                    <Feather name="arrow-left" size={35} color={"#FFA500"}/>
                 </TouchableOpacity>
                 <Text style={styles.headerText}>Voltar</Text>
             </View>
@@ -43,7 +40,7 @@ export default function Categorias(){
                     <TouchableOpacity onPress={() => navigationToProduto(categoria)}>
                         <View style={styles.categoria}>
                             <Text style={styles.categoriaTitle}>{categoria.cat_002}</Text>
-                            <Feather name="arrow-right" size={25} color={"#FBAC18"}/>
+                            <Feather name="arrow-right" size={25} color={"#FFA500"}/>
                         </View>                        
                     </TouchableOpacity>
                 )}

@@ -17,7 +17,7 @@ export default StyleSheet.create({
         color: '#808080',
         fontWeight: "bold",
         fontStyle: "italic"
-    },
+    }, 
     search:{
         marginTop: 10,
         flexDirection: 'row',

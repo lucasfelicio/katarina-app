@@ -28,15 +28,16 @@ export default StyleSheet.create({
         marginBottom:10,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'  
+        alignItems: 'center',
     },
     produtoTitle:{
         fontSize: 16,
         color: '#41414d',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        width: "70%"
     },
     produtoValor:{
         fontSize: 15,
-        color: '#41414d',        
+        color: '#41414d', 
     }
 })

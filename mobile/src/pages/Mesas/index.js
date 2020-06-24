@@ -15,7 +15,7 @@ export default function Mesas() {
     const [id_venda, setIdVenda] = useState(0);
     async function loadMesas(){
         try {
-            const response = await api.get('vendas',{params:{tipo:'M',id_empresa:1}});
+            const response = await api.get('venda',{params:{tipo:'M',id_empresa:1}});
             setMesas(response.data)           
         } catch (error) {
             Alert.alert('Atenção',error.response.data.descricao)
@@ -23,7 +23,7 @@ export default function Mesas() {
     }
     async function loadMesa(){
         try {
-            const response = await api.get('vendas',{params:{tipo:'M',nro_com_mesa:num_comanda,id_empresa:1}}) 
+            const response = await api.get('venda',{params:{tipo:'M',nro_com_mesa:num_comanda,id_empresa:1}}) 
             setComandas(response.data)            
         } catch (error) {
             Alert.alert('Atenção',error.response.data.descricao)
@@ -32,7 +32,7 @@ export default function Mesas() {
     async function abrirMesa(){
         try {
             const id_usuario = await AsyncStorage.getItem('@katarinaMobile:user_id');            
-            const response = await api.post('vendas',
+            const response = await api.post('venda',
                                 {params:{tipo:'M',nro_comanda:0,nro_mesa:1,id_empresa:1},
                                 headers:{'Authorization':`Bearer${id_usuario}`},})
             setIdVenda(response.data)                      
@@ -41,7 +41,7 @@ export default function Mesas() {
         }
     }
     function navigationToCategorias(){
-        abrirMesa();
+        //abrirMesa();
         navigation.navigate('Categorias',{id_venda});
     }   
     useEffect(()=>{
@@ -52,7 +52,7 @@ export default function Mesas() {
             <View style={styles.header}>
                 <Text style={styles.headerText}>Mesas</Text>
                 <TouchableOpacity onPress={() => navigationToCategorias()}>
-                    <Feather name="plus-circle" size={35} color={"#FBAC18"}/>
+                    <Feather name="plus-circle" size={35} color={"#FFA500"}/>
                 </TouchableOpacity>
             </View>
             <View style={styles.search}>
@@ -75,7 +75,7 @@ export default function Mesas() {
                     <TouchableOpacity onPress={()=>{}}>
                         <View style={styles.mesa}>
                     <Text style={styles.mesaTitle}>MESAS {mesa.ven_025}</Text>
-                            <Text style={styles.comandaValor}>
+                            <Text style={styles.mesaValor}>
                                 {Intl.NumberFormat('pt-BR',{
                                     style: 'currency', 
                                     currency: 'BRL'

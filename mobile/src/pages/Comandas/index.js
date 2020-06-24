@@ -15,7 +15,7 @@ export default function Comandas() {
     const [id_venda, setIdVenda] = useState(0);
     async function loadComandas(){
         try {
-            const response = await api.get('vendas',{
+            const response = await api.get('venda',{
                 params:{ tipo:'C', id_empresa:1}
             });
             setComandas(response.data);
@@ -28,7 +28,7 @@ export default function Comandas() {
     }
     async function loadComanda(){
         try {
-            const response = await api.get('vendas',{params:{tipo:'C',nro_com_mesa:num_comanda,id_empresa:1}}) 
+            const response = await api.get('venda',{params:{tipo:'C',nro_com_mesa:num_comanda,id_empresa:1}}) 
             setComandas(response.data)            
         } catch (error) {
             Alert.alert('Atenção',error.response.data.descricao)
@@ -37,8 +37,7 @@ export default function Comandas() {
     async function abrirComanda(){
         try {
             const id_usuario = await AsyncStorage.getItem('@katarinaMobile:user_id'); 
-            //const id_empresa = await AsyncStorage.getItem('@katarinaMobile:id_empresa'); 
-            const response = await api.post('vendas',
+            const response = await api.post('venda',
                                 {params:{tipo:'C',nro_comanda:101,nro_mesa:0,id_empresa:1},
                                 headers:{'Authorization':`Bearer${id_usuario}`},})
             setIdVenda(response.data)                      
@@ -47,10 +46,10 @@ export default function Comandas() {
         }
     }
     function navigationToCategorias(){
-        abrirComanda();
-        //navigation.navigate('Categorias',{id_venda});
+        //abrirComanda();
+        navigation.navigate('Categorias',{id_venda});
     }
-    useEffect(()=>{
+    useEffect(()=>{ 
         loadComandas();
     },[])
     return(

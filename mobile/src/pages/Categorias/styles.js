@@ -34,6 +34,7 @@ export default StyleSheet.create({
     categoriaTitle:{
         fontSize: 16,
         color: '#41414d',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        width: "90%"
     }
 })
