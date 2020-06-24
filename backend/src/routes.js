@@ -16,7 +16,7 @@ routes.get('/produtos', Produtos.read)
 routes.get('/opcionais',Opcionais.read)
 
 routes.get('/vendas', Vendas.read);
-routes.post('/vendas', Vendas.create)
+routes.post('/vendas', Vendas.create);
 
 
 // routes.get('/ongs', OngController.index);

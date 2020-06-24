@@ -42,10 +42,10 @@ export default function fLogin(){
                     placeholder='Usuário'
                     value={login}
                     onChangeText={setlogin}
-                    ReturnKeyType={'next'}
                 />
                 <TextInput 
                     style={styles.input}
+                    name={'edtsenha'}
                     placeholder='Senha'
                     value={senha}
                     onChangeText={setSenha}

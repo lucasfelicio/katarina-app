@@ -5,10 +5,10 @@ export default StyleSheet.create({
     container:{
         flex: 1,
         paddingHorizontal: 20,
-        paddingTop: Constants.statusBarHeight + 10,
+        paddingTop: Constants.statusBarHeight + 5,
     },
     inputs:{
-        paddingTop: 10,
+        paddingTop: 5,
         padding: 10, 
         justifyContent: "flex-start"
     },
@@ -37,11 +37,9 @@ export default StyleSheet.create({
         alignItems: "center"
     },
     rodape:{
-        flex: 1,
         justifyContent: "flex-end",
-        paddingHorizontal: 20,
         alignItems: "center",
-        paddingBottom: 15
+        marginTop: 230
     },
     tituloButtom:{
         fontSize: 18,   

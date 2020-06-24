@@ -5,7 +5,6 @@ import { Input } from 'react-native-elements';
 import { Feather } from "@expo/vector-icons"; 
 import {useNavigation} from '@react-navigation/native';
 import ButtonsBox from '../../components/buttonsBox'
-
 import styles from './styles';
 import api from '../../services/api';
 
@@ -14,7 +13,6 @@ export default function Comandas() {
     const [comandas, setComandas] = useState();
     const [num_comanda, setNumComanda] = useState(0);    
     const [id_venda, setIdVenda] = useState(0);
-
     async function loadComandas(){
         try {
             const response = await api.get('vendas',{
@@ -38,9 +36,10 @@ export default function Comandas() {
     }
     async function abrirComanda(){
         try {
-            const id_usuario = await AsyncStorage.getItem('@katarinaMobile:user_id');            
+            const id_usuario = await AsyncStorage.getItem('@katarinaMobile:user_id'); 
+            //const id_empresa = await AsyncStorage.getItem('@katarinaMobile:id_empresa'); 
             const response = await api.post('vendas',
-                                {params:{tipo:'C',nro_comanda:1,nro_mesa:0,id_empresa:1},
+                                {params:{tipo:'C',nro_comanda:101,nro_mesa:0,id_empresa:1},
                                 headers:{'Authorization':`Bearer${id_usuario}`},})
             setIdVenda(response.data)                      
         } catch (error) {
@@ -48,8 +47,8 @@ export default function Comandas() {
         }
     }
     function navigationToCategorias(){
-        //abrirComanda();
-        navigation.navigate('Categorias',{id_venda});
+        abrirComanda();
+        //navigation.navigate('Categorias',{id_venda});
     }
     useEffect(()=>{
         loadComandas();

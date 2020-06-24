@@ -4,6 +4,7 @@ module.exports = {
     async create(request, response) {
         const id_usuario = request.headers.authorization;
         const { tipo, nro_comanda, nro_mesa, id_empresa } = request.query;
+        console.log(tipo, nro_comanda, nro_mesa, id_empresa)
         try {
             const [id] = await connection('venda')
                 .where('emp_001',id_empresa)

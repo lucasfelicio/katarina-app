@@ -1,13 +1,12 @@
 {
   "expo": {
-    "name": "Be The Hero",
-    "slug": "bethehero",
+    "name": "Katarina",
+    "slug": "Katarinaapp",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,7 +23,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier":"com.nortesystem.katarin"
+    },
+    "android":{
+      "package":"com.nortesystem.katarina"
     }
+    
   }
 }
