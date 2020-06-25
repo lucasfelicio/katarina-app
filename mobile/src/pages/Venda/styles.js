@@ -2,158 +2,114 @@ import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 export default StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
-        paddingTop: Constants.statusBarHeight,  
+        paddingTop: Constants.statusBarHeight,
     },
-    header:{
-        backgroundColor: '#D3D3D3',
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center'
+    header: {
+        paddingHorizontal: 20,
+        justifyContent: 'center',
+        backgroundColor: '#A9A9A9',
+        height: 70
     },
-    headerText:{
-        fontSize: 25,
+    headerText: {
+        fontSize: 30,
         fontWeight: 'bold',
-        color: '#00A86B'
+        color: '#474A51',
     },
-    headerProd:{
-        height: 40,
-        flexDirection: 'row',
+    itemTitle: {
         justifyContent: 'center',
         alignItems: 'center',
-        paddingHorizontal: 10,
+        padding: 5,
+        backgroundColor: '#D3D3D3'
     },
-    headerProdText:{
-        color: '#41414d',
-        fontWeight: "bold",
-        fontSize: 18,
+    itemText: {
+        fontSize: 17,
+        color: '#474A51',
     },
-    infoProdTitle:{
-        paddingHorizontal:10,
-        height: 20,
+    containerItem: {
+        marginBottom: 5
+    },
+    infoItemHeader: {
+        backgroundColor: '#000',
+        paddingHorizontal: 20,
+        justifyContent: 'space-between',
         flexDirection: 'row',
-        justifyContent: "space-between",
-        alignItems: 'center',
-        backgroundColor: '#737380',
-    },
-    infoProdText:{
-        color: '#fff'
-    },
-    infoProdValue:{
-        paddingHorizontal:10,
-        height: 30,
-        flexDirection: 'row',
-        justifyContent: "space-between",
-        alignItems: 'center',
-        backgroundColor: '#dcdcdc',
-    },
-    infoPordValueText:{
-        color: '#41414d',
-    },
-    buttonsProdBox:{
-        marginTop:10,
-        marginBottom:10,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        paddingHorizontal:10,     
-    },
-    buttonOpcional:{
-        backgroundColor: '#FFA500',
-        borderRadius:8,
-        height: 35,
-        width: '48%',
-        justifyContent: 'center',
         alignItems: 'center'
     },
-    buttonAdd:{
-         backgroundColor: '#00A86B',
-         borderRadius:8,
-         height: 35,
-         width: '48%',
-         justifyContent: 'center',
-         alignItems: 'center'
-    },
-    buttonText:{
-        fontSize: 16,
-        fontWeight: "bold",
-        color: '#fff'
-    },
-    headerPedList:{
-        marginTop: 10,
-        paddingHorizontal:10,
-        height: 25,
+    infoItemValor: {
+        backgroundColor: '#D3D3D3',
+        paddingHorizontal: 20,
+        justifyContent: 'space-between',
         flexDirection: 'row',
-        justifyContent: "center",
-        alignItems: 'center',
-        backgroundColor: '#737380',   
+        alignItems: 'center'
     },
-    headerPedListText:{
-        color: '#fff',
+    infoItemText: {
+        color: '#FFF',
+        fontSize: 15,
+        fontWeight: 'bold'
+    },
+    containerAdd: {
+        paddingHorizontal: 20,
+        marginBottom: 5,
+    },
+    containerQtd: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    qtdInput: {
+
+    },
+    bannerLista: {
+        backgroundColor: '#000',
+        paddingHorizontal: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    listaHeader: {
+        color: '#FFF',
         fontSize: 16,
         fontWeight: 'bold'
     },
-    pedListTitle:{
-        paddingHorizontal:10,
-        height: 20,
-        flexDirection: 'row',
-        justifyContent: "space-between",
+    bannerTotal: {
+        backgroundColor: '#000',
         alignItems: 'center',
-        backgroundColor: '#dcdcdc',
-    },
-    itensList:{
-        marginTop: 9,
-    },
-    item:{
-        padding:10,
-        backgroundColor: '#fff',
-        marginBottom:5,
-    },
-    itemText:{
-        fontSize: 16,
-        color: '#41414d', 
-        fontWeight: "bold"
-    },
-    itemBox:{
-        marginTop:3,
-        flexDirection: 'row',
         justifyContent: 'space-between',
+        flexDirection: 'row',
+        paddingHorizontal: 20,
+        height: 40
+    },
+    totalHeader: {
+        color: '#FFF',
+        fontSize: 25,
+        fontWeight: 'bold'
+    },
+    botoesBox: {
+        paddingHorizontal: 15,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
         alignItems: 'center',
+        height: 60,
     },
-    itemBoxText:{
-        fontSize: 14,
-        color: '#A0A0A0',         
-    },
-    vendaTotalBox:{
-        paddingHorizontal:10,  
-        height: 40, 
-        justifyContent: 'center', 
-        backgroundColor: '#41414d',
-    },
-    vendaTotalText:{
-        fontWeight: "bold",
-        fontSize: 20,
-        color: '#fff'
-    },
-    botoesBox:{
-        borderRadius:8,
-        marginTop:5,
-        marginBottom:5,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingHorizontal:10,    
-    },
-    button:{
+    button: {
         backgroundColor: '#FFA500',
         borderRadius: 8,
-        height: 45,
-        width: '48%',
+        height: 50,
+        width: '32%',
         justifyContent: 'center',
         alignItems: 'center'
     },
-    buttonText:{
-        fontSize: 16,
-        fontWeight: "bold",
-        color: '#fff'
+    buttonAdd: {
+        backgroundColor: '#50C878',
+        borderRadius: 8,
+        height: 30,
+        width: '30%',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    buttonText: {
+        color: '#FFF',
+        fontSize: 18,
+        fontWeight: 'bold'
     }
 })

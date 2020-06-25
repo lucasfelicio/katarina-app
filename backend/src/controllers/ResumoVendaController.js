@@ -26,7 +26,7 @@ module.exports = {
       return response.status(200).json(venda.concat({vendaitens}));
 
     } catch (error) {
-      return response.status(500).json({ descricao: 'Erro no servidor: ' + error })
+      return response.status(500).json({ descricao: 'Erro no servidor: ' + error.message })
     }
   } 
 };

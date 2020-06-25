@@ -2,47 +2,47 @@ import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 export default StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
         paddingHorizontal: 20,
         paddingTop: Constants.statusBarHeight + 20,
     },
-    header:{
+    header: {
         flexDirection: 'row',
-        justifyContent:'space-between',
-        alignItems: 'center'           
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
-    headerText:{
+    headerText: {
         fontSize: 25,
         color: '#808080',
         fontWeight: "bold",
         fontStyle: "italic"
-    }, 
-    search:{
+    },
+    search: {
         marginTop: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center' 
+        alignItems: 'center'
     },
-    comandaList:{
+    comandaList: {
         marginTop: 10
     },
-    comanda:{
-        padding:18,
-        borderRadius:8,
+    comanda: {
+        padding: 18,
+        borderRadius: 8,
         backgroundColor: '#fff',
-        marginBottom:10, 
+        marginBottom: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'     
+        alignItems: 'center'
     },
-    comandaTitle:{
+    comandaTitle: {
         fontSize: 16,
         color: '#41414d',
         fontWeight: 'bold'
     },
-    comandaValor:{
-        fontSize:16,
-        color: '#737380'  
+    comandaValor: {
+        fontSize: 16,
+        color: '#737380'
     },
 });

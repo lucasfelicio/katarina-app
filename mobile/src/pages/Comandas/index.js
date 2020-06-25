@@ -23,8 +23,8 @@ export default function Comandas() {
             Alert.alert('Atenção',error.response.data.descricao)            
         }
     };
-    function loadResumo(id_venda){
-        navigation.navigate('Resumo',{id_venda});
+    function loadResumo(id_venda,valor,num_comanda){
+        navigation.navigate('Resumo',{id_venda,valor,titulo:'Comanda '+num_comanda});
     }
     async function loadComanda(){
         try {
@@ -77,7 +77,9 @@ export default function Comandas() {
                 keyExtractor={comanda => String(comanda.ven_001)}
                 showsVerticalScrollIndicator={false}
                 renderItem={({item:comanda}) => (
-                    <TouchableOpacity onPress={()=> loadResumo(comanda.ven_001)} >
+                    <TouchableOpacity 
+                        onPress={()=>loadResumo(comanda.ven_001,comanda.ven_009,comanda.ven_026)}
+                    >
                         <View style={styles.comanda}>
                         <Text style={styles.comandaTitle}>COMANDA {comanda.ven_026}</Text>
                             <Text style={styles.comandaValor}>

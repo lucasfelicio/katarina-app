@@ -2,36 +2,36 @@ import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 export default StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
         paddingHorizontal: 20,
         paddingTop: Constants.statusBarHeight + 20,
-        
+
     },
-    header:{
+    header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '48%',
     },
-    headerText:{
+    headerText: {
         fontSize: 20,
         color: '#737380',
         fontWeight: "bold"
     },
-    categoriaList:{
+    categoriaList: {
         marginTop: 10
     },
-    categoria:{
-        padding:10,
-        borderRadius:8,
+    categoria: {
+        padding: 10,
+        borderRadius: 8,
         backgroundColor: '#fff',
-        marginBottom:10,
+        marginBottom: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'  
+        alignItems: 'center'
     },
-    categoriaTitle:{
+    categoriaTitle: {
         fontSize: 16,
         color: '#41414d',
         fontWeight: 'bold',
