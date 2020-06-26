@@ -5,14 +5,12 @@ const Venda = require('./controllers/VendaController');
 const VendaResumo = require('./controllers/ResumoVendaController');
 const Categorias = require('./controllers/CategoriaController');
 const Produtos = require('./controllers/ProdutoController');
-const Opcionais = require('./controllers/OpcionalController');
 
 const routes = express.Router();
 
-routes.get('/sessions', Session.create);
+routes.get('/sessions', Session.read);
 routes.get('/categorias', Categorias.read);
 routes.get('/produtos', Produtos.read)
-routes.get('/opcionais', Opcionais.read)
 routes.get('/venda', Venda.read);
 routes.get('/venda/resumo', VendaResumo.read);
 

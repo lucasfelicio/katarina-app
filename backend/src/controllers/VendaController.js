@@ -51,7 +51,6 @@ module.exports = {
                     'emp_001': id_empresa,
                     'dat_001_1': timestamp('YYYY-MM-DD HH:mm:ss.ms'),
                     'ven_025': nro_mesa,
-                    'cli_001': 0,
                     'sit_001': 8,
                     'usu_001_1': id_usuario,
                     'ven_024': tipo,
@@ -102,7 +101,6 @@ module.exports = {
                     'tamanho': 'M',
                     'b_venda_tamanho': false,
                     'quantidade_impressao': 1,
-                    'desconto': 0
                 });
             await connection.raw(`select fn_calcula_total_venda(${id_venda},${id_empresa})`)
             return response.status(200).send();

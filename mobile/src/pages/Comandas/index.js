@@ -12,46 +12,44 @@ export default function Comandas() {
     const navigation = useNavigation();
     const [comandas, setComandas] = useState();
     const [num_comanda, setNumComanda] = useState(0);
-    const [id_venda, setIdVenda] = useState(0);
+    let id_venda = 0;
     async function loadComandas() {
-        try {
-            const response = await api.get('venda', {
-                params: { tipo: 'C', id_empresa: 1 }
-            });
-            setComandas(response.data);
-        } catch (error) {
+        await api.get('venda', {
+            params: { tipo: 'C', id_empresa: 1 }
+        }).then(function (res) {
+            setComandas(res.data);
+        }).catch(function (error) {
             Alert.alert('Atenção', error.response.data.descricao)
-        }
+        })
     };
-    function loadResumo(id_venda, valor, num_comanda) {
-        navigation.navigate('Resumo', { id_venda, valor, titulo: 'Comanda ' + num_comanda });
-    }
+
     async function loadComanda() {
-        try {
-            const response = await api.get('venda', { params: { tipo: 'C', nro_com_mesa: num_comanda, id_empresa: 1 } })
-            setComandas(response.data)
-        } catch (error) {
-            Alert.alert('Atenção', error.response.data.descricao)
-        }
+        api.get('venda', { params: { tipo: 'C', nro_com_mesa: num_comanda, id_empresa: 1 } })
+            .then(function (res) {
+                setComandas(res.data)
+            }).catch(function (error) {
+                Alert.alert('Atenção', error.response.data.descricao)
+            })
+
     }
     async function abrirComanda() {
         const id_usuario = await AsyncStorage.getItem('@katarinaMobile:user_id');
-        await api.post('venda',
-            {
-                tipo: 'C', nro_comanda: 230, nro_mesa: 0, id_empresa: 1,
-            }).then(function (res) {
-                console.log(res.data)
+        await api.post('venda', { tipo: 'C', nro_comanda: 230, nro_mesa: 0, id_empresa: 1, })
+            .then(function (res) {
+                id_venda = res.data;
             }).catch(function (error) {
                 if (error) {
-                    // console.log(error)
-                    // Alert.alert('Atenção', error.response.data.descricao)
+                    Alert.alert('Atenção', error.response.data.descricao)
                 }
             })
-
+    }
+    function navigateToResumo(id_venda, valor, num_comanda) {
+        navigation.navigate('Resumo', { id_venda, valor, titulo: 'Comanda ' + num_comanda });
     }
     function navigationToCategorias() {
         abrirComanda();
         //navigation.navigate('Categorias', { id_venda });
+        console.log(id_venda)
     }
     useEffect(() => {
         loadComandas();
@@ -82,7 +80,7 @@ export default function Comandas() {
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item: comanda }) => (
                     <TouchableOpacity
-                        onPress={() => loadResumo(comanda.ven_001, comanda.ven_009, comanda.ven_026)}
+                        onPress={() => navigateToResumo(comanda.ven_001, comanda.ven_009, comanda.ven_026)}
                     >
                         <View style={styles.comanda}>
                             <Text style={styles.comandaTitle}>COMANDA {comanda.ven_026}</Text>
