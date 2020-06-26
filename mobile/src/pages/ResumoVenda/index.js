@@ -12,7 +12,6 @@ export default function resumo() {
   const id_venda = route.params.id_venda;
   const titulo = route.params.titulo;
   const valor_total = route.params.valor;
-
   const [venda, setVenda] = useState();
   const [vendaitens, setVendaitens] = useState();
 

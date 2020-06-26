@@ -5,7 +5,7 @@ module.exports = {
         const { tipo, nro_com_mesa, id_empresa } = request.query;
         try {
             let select = connection
-                .select('ven_001', 'ven_009','ven_026','ven_025')
+                .select('ven_001', 'ven_009', 'ven_026', 'ven_025')
                 .from('venda')
                 .orderBy('venda.ven_001', 'asc')
                 .where({ 'emp_001': id_empresa, 'sit_001': 8, 'ven_024': tipo })
@@ -26,19 +26,21 @@ module.exports = {
         } catch (error) {
             return response.status(500).json({ descricao: 'Erro no servidor: ' + error })
         }
-    }, 
+    },
     async create(request, response) {
         const id_usuario = request.headers.authorization;
-        const { tipo, nro_comanda, nro_mesa, id_empresa } = request.query;
+        const { tipo, nro_comanda, nro_mesa, id_empresa } = request.body;
+        console.log(tipo, nro_comanda, nro_mesa, id_empresa)
         try {
             const [id] = await connection('venda')
-                .where('emp_001',id_empresa)
+                .where('emp_001', id_empresa)
                 .max('ven_001')
             id_venda = id['max'] + 1;
 
             const [caixa] = await connection('caixa')
                 .select('id_caixa')
-                .where({'id_empresa': id_empresa,'id_situacao':4
+                .where({
+                    'id_empresa': id_empresa, 'id_situacao': 4
                 });
             id_caixa = caixa['id_caixa'];
 
@@ -60,8 +62,8 @@ module.exports = {
                     'ven_026': nro_comanda,
                     'terminal_abertura': 'Aplicativo mobile'
                 });
-            if (!id_venda){
-                return response.status(400).json({ descricao: 'Erro ao inserir a venda'});
+            if (!id_venda) {
+                return response.status(400).json({ descricao: 'Erro ao inserir a venda' });
             }
             else {
                 return response.status(200).json(id_venda);
@@ -70,10 +72,10 @@ module.exports = {
             return response.status(500).json({ descricao: 'Erro no servidor: ' + error })
         }
     },
-    async createItem(request, response){
+    async createItem(request, response) {
         const id_usuario = request.headers.authorization;
-        const {id_empresa,id_venda,id_produto,quantidade,valor_unit,
-                valor_total, observacao,id_impressora} = request.query;
+        const { id_empresa, id_venda, id_produto, quantidade, valor_unit,
+            valor_total, observacao, id_impressora } = request.query;
         try {
             const [item] = await connection('vendaitem').max('ite_001')
                 .where({
@@ -82,26 +84,26 @@ module.exports = {
                 });
             nro_item = item['max'] + 1
             await connection('vendaitem')
-            .insert({
-                'emp_001': id_empresa,
-                'ven_001': id_venda,
-                'mat_001': id_produto,
-                'sit_001': 4,
-                'ite_001': nro_item,
-                'ite_002': quantidade,
-                'ite_003': valor_unit,
-                'ite_005': valor_total,
-                'ite_006': observacao,
-                'ite_008': 'N',
-                'ite_011': 'S',
-                'ite_012': 'N',
-                'ite_013': id_impressora,
-                'gar_001': id_usuario,
-                'tamanho': 'M',
-                'b_venda_tamanho': false,
-                'quantidade_impressao': 1,
-                'desconto': 0
-            });
+                .insert({
+                    'emp_001': id_empresa,
+                    'ven_001': id_venda,
+                    'mat_001': id_produto,
+                    'sit_001': 4,
+                    'ite_001': nro_item,
+                    'ite_002': quantidade,
+                    'ite_003': valor_unit,
+                    'ite_005': valor_total,
+                    'ite_006': observacao,
+                    'ite_008': 'N',
+                    'ite_011': 'S',
+                    'ite_012': 'N',
+                    'ite_013': id_impressora,
+                    'gar_001': id_usuario,
+                    'tamanho': 'M',
+                    'b_venda_tamanho': false,
+                    'quantidade_impressao': 1,
+                    'desconto': 0
+                });
             await connection.raw(`select fn_calcula_total_venda(${id_venda},${id_empresa})`)
             return response.status(200).send();
         } catch (error) {

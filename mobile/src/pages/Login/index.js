@@ -16,7 +16,7 @@ export default function fLogin() {
 
     async function signIn() {
         await api.get('sessions', { params: { login, senha } })
-            .then((res) => {
+            .then(function (res) {
                 user = res.data;
                 navigation.navigate('Comandas');
             })

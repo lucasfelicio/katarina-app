@@ -12,23 +12,13 @@ const routes = express.Router();
 routes.get('/sessions', Session.create);
 routes.get('/categorias', Categorias.read);
 routes.get('/produtos', Produtos.read)
-routes.get('/opcionais',Opcionais.read)
+routes.get('/opcionais', Opcionais.read)
 routes.get('/venda', Venda.read);
 routes.get('/venda/resumo', VendaResumo.read);
 
-routes.post('/venda',celebrate({
-  [Segments.QUERY]: Joi.object().keys({
-    tipo: Joi.string().required(),
-    nro_comanda: Joi.number(),
-    nro_mesa: Joi.number(),
-    id_empresa: Joi.number()
-  }),
-  [Segments.HEADERS]: Joi.object({
-    authorization: Joi.string().required(),
-  }).unknown()
-}), Venda.create);
+routes.post('/venda', Venda.create);
 
-routes.post('/venda/item',celebrate({
+routes.post('/venda/item', celebrate({
   [Segments.QUERY]: Joi.object().keys({
     id_empresa: Joi.number(),
     id_venda: Joi.number(),
