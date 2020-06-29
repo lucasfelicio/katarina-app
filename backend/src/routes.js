@@ -16,20 +16,6 @@ routes.get('/venda/resumo', VendaResumo.read);
 
 routes.post('/venda', Venda.create);
 
-routes.post('/venda/item', celebrate({
-  [Segments.QUERY]: Joi.object().keys({
-    id_empresa: Joi.number(),
-    id_venda: Joi.number(),
-    id_produto: Joi.number(),
-    quantidade: Joi.number(),
-    valor_unit: Joi.number(),
-    valor_total: Joi.number(),
-    observacao: Joi.string(),
-    id_impressora: Joi.number()
-  }),
-  [Segments.HEADERS]: Joi.object({
-    authorization: Joi.string().required(),
-  }).unknown()
-}), Venda.createItem);
+routes.post('/venda/item', Venda.createItem);
 
 module.exports = routes;

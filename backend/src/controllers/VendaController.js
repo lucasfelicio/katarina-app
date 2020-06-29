@@ -9,7 +9,6 @@ module.exports = {
                 .from('venda')
                 .orderBy('venda.ven_001', 'asc')
                 .where({ 'emp_001': id_empresa, 'sit_001': 8, 'ven_024': tipo })
-
             if (nro_com_mesa != undefined && nro_com_mesa != 0) {
                 select = select.andWhere(function () {
                     this.where('ven_025', nro_com_mesa)
@@ -18,32 +17,31 @@ module.exports = {
             }
             const vendas = await select
             if (!vendas) {
-                return response.status(401).json({ descricao: 'Erro ao consultar venda(s)!' })
+                return response.status(401)
+                    .json({ descricao: 'Erro ao consultar venda(s)!' })
             }
             else {
                 return response.status(200).json(vendas);
             }
         } catch (error) {
-            return response.status(500).json({ descricao: 'Erro no servidor: ' + error })
+            return response.status(500)
+                .json({ descricao: 'Erro no servidor: ' + error })
         }
     },
     async create(request, response) {
         const id_usuario = request.headers.authorization;
         const { tipo, nro_comanda, nro_mesa, id_empresa } = request.body;
-        console.log(tipo, nro_comanda, nro_mesa, id_empresa)
         try {
             const [id] = await connection('venda')
                 .where('emp_001', id_empresa)
                 .max('ven_001')
             id_venda = id['max'] + 1;
-
             const [caixa] = await connection('caixa')
                 .select('id_caixa')
                 .where({
                     'id_empresa': id_empresa, 'id_situacao': 4
                 });
             id_caixa = caixa['id_caixa'];
-
             await connection('venda')
                 .insert({
                     'ven_001': id_venda,
@@ -62,19 +60,25 @@ module.exports = {
                     'terminal_abertura': 'Aplicativo mobile'
                 });
             if (!id_venda) {
-                return response.status(400).json({ descricao: 'Erro ao inserir a venda' });
+                return response.status(400)
+                    .json({ descricao: 'Erro ao inserir a venda' });
             }
             else {
                 return response.status(200).json(id_venda);
             }
         } catch (error) {
-            return response.status(500).json({ descricao: 'Erro no servidor: ' + error })
+            return response.status(500)
+                .json({ descricao: 'Erro no servidor: ' + error })
         }
     },
     async createItem(request, response) {
         const id_usuario = request.headers.authorization;
         const { id_empresa, id_venda, id_produto, quantidade, valor_unit,
-            valor_total, observacao, id_impressora } = request.query;
+            valor_total, observacao, id_impressora } = request.body;
+
+        console.log(id_empresa, id_venda, id_produto, quantidade, valor_unit,
+            valor_total, observacao, id_impressora)
+
         try {
             const [item] = await connection('vendaitem').max('ite_001')
                 .where({
@@ -102,10 +106,12 @@ module.exports = {
                     'b_venda_tamanho': false,
                     'quantidade_impressao': 1,
                 });
-            await connection.raw(`select fn_calcula_total_venda(${id_venda},${id_empresa})`)
+            await connection.raw(`select fn_calcula_total_venda
+                (${id_venda},${id_empresa})`)
             return response.status(200).send();
         } catch (error) {
-            return response.status(500).json({ descricao: 'Erro no servidor: ' + error })
+            return response.status(500)
+                .json({ descricao: 'Erro no servidor: ' + error })
         }
     },
 };

@@ -1,21 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Alert } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { Feather } from "@expo/vector-icons";
-import styles from './styles';
 import { Input } from 'react-native-elements';
+import UIStepper from 'react-native-ui-stepper';
+import styles from './styles';
 import api from '../../services/api';
 export default function Produtos() {
     const route = useRoute();
     const id_venda = route.params.id_venda;
     const produto = route.params.produto;
     const [itens, setItens] = useState();
-
+    const [venda, setVenda] = useState();
+    const [obs, setObs] = useState('');
+    const [quantidade, setQuantidade] = useState(1);
+    const [val_totalitem, setValTotalItem] = useState(0.00);
     async function loadItens() {
-        //const response = await api.get('vendaitem',{params:{id_venda}});
-        //setItens(response.data)
+        await api.get('venda/resumo', { params: { id_venda, id_empresa: 1 } })
+            .then(function (res) {
+                setVenda(res.data[0]);
+                setItens(res.data[1].vendaitens);
+            })
+    }
+    function calculaTotalItem(quantidade) {
+        setQuantidade(quantidade)
+        setValTotalItem(produto.mat_008 * quantidade);
+    }
+    async function inserirItem() {
+        calculaTotalItem(quantidade);
+        await api.post('venda/item', {
+            id_empresa: 1, id_venda, id_produto: produto.mat_001,
+            quantidade, valor_unit: produto.mat_008, val_total: val_totalitem,
+            observacao: obs, id_impressora: produto.mat_021
+        }).then(function (res) {
+            Alert.alert('Atenção', 'Produto inserido com sucesso!');
+        }).catch(function (error) {
+            Alert.alert('Atenção', error.response.data.descricao)
+        })
     }
     useEffect(() => {
+        calculaTotalItem(1);
         loadItens();
     }, [])
     return (
@@ -23,8 +47,8 @@ export default function Produtos() {
             <View style={styles.header}>
                 <Text style={styles.headerText}>Pedido Nº {id_venda}</Text>
             </View>
-            <View style={styles.itemTitle}>
-                <Text style={styles.itemText}>{produto.mat_001} - {produto.mat_003}</Text>
+            <View style={styles.itemHeaderTitle}>
+                <Text style={styles.itemHeaderText}>{produto.mat_001} - {produto.mat_003}</Text>
             </View>
             <View style={styles.containerItem}>
                 <View style={styles.infoItemHeader}>
@@ -39,29 +63,29 @@ export default function Produtos() {
                             currency: 'BRL',
                         }).format(produto.mat_008)}
                     </Text>
-                    <Text style={styles.infoItemText}>1.00</Text>
+                    <Text style={styles.infoItemText}>{quantidade}</Text>
                     <Text style={styles.infoItemText}>{
                         Intl.NumberFormat('pt-BR', {
                             style: 'currency',
                             currency: 'BRL',
-                        }).format(0.00)}</Text>
+                        }).format(val_totalitem)}</Text>
                 </View>
             </View>
             <View style={styles.containerAdd}>
                 <View style={styles.containerQtd}>
-                    <Feather name="minus-circle" size={30} color={"#000"} />
-                    <Input
-                        style={styles.qtdIput}
-                        keyboardType='numeric'
+                    <UIStepper
+                        onValueChange={(value) => { calculaTotalItem(value) }}
                     />
-                    <Feather name="plus-circle" size={30} color={"#000"} />
-                    <TouchableOpacity style={styles.buttonAdd}>
+                    <TouchableOpacity style={styles.buttonAdd}
+                        onPress={() => inserirItem()}
+                    >
                         <Text style={styles.buttonText}>Adiconar</Text>
                     </TouchableOpacity>
                 </View>
                 <Input
                     style={styles.obsText}
                     placeholder="Observações"
+                    onChangeText={text => setObs(text)}
                 />
             </View>
             <View style={styles.bannerLista}>
@@ -74,16 +98,28 @@ export default function Produtos() {
                 style={styles.lista}
                 keyExtractor={vendaitem => String(vendaitem)}
                 showsVerticalScrollIndicator={false}
-                renderItem={({ item: vendaitem }) => (
-                    <View style={styles.item}>
-                        <Text style={styles.itemText}>{vendaitem.mat_003}</Text>
-                        <View style={styles.itemBox}>
-                            <Text style={styles.itemBoxText}>Quantidade: 1</Text>
-                            <Text style={styles.itemBoxText}>Total item:{' '}
+                renderItem={({ item: vitem }) => (
+                    <View style={styles.itens}>
+                        <View style={styles.boxTitulo}>
+                            <Text style={styles.itemTitle}>
+                                {vitem.ite_001} - {vitem.mat_003}
+                            </Text>
+                        </View>
+                        <View style={styles.boxValor}>
+                            <Text style={styles.itemValor}>
+                                {Intl.NumberFormat().format(vitem.ite_002)}
+                            </Text>
+                            <Text style={styles.itemValor}>
+                                {Intl.NumberFormat('pt-BR', {
+                                    style: 'currency',
+                                    currency: 'BRL',
+                                }).format(vitem.ite_003)}
+                            </Text>
+                            <Text style={styles.itemValor}>
                                 {Intl.NumberFormat('pt-BR', {
                                     style: 'currency',
                                     currency: 'BRL'
-                                }).format(vendaitem.mat_008)}
+                                }).format(vitem.ite_005)}
                             </Text>
                         </View>
                     </View>

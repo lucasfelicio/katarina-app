@@ -1,9 +1,9 @@
 module.exports = {
-  development: {
+  production: {
     client: 'postgresql',
     connection: {
       database: 'nortesystem',// nome do banco de dados
-      user:     'nortesystem',//usuário do banco de dados
+      user: 'nortesystem',//usuário do banco de dados
       password: '101485', //senha do usuário do banco de dados
       port: 5432,//porta do serviço do banco de dados
       host: 'localhost' //endereço do servidor do banco de dados
@@ -18,7 +18,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'nortesystem',// nome do banco de dados
-      user:     'nortesystem',//usuário do banco de dados
+      user: 'nortesystem',//usuário do banco de dados
       password: '101485', //senha do usuário do banco de dados
       port: 5432,//porta do serviço do banco de dados
       host: 'localhost' //endereço do servidor do banco de dados
@@ -33,7 +33,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'nortesystem',// nome do banco de dados
-      user:     'nortesystem',//usuário do banco de dados
+      user: 'nortesystem',//usuário do banco de dados
       password: '101485', //senha do usuário do banco de dados
       port: 5432,//porta do serviço do banco de dados
       host: 'localhost' //endereço do servidor do banco de dados
@@ -44,11 +44,11 @@ module.exports = {
     },
     useNullAsDefault: true,
   },
-  production: {
+  development: {
     client: 'postgresql',
     connection: {
       database: 'nortesystem',// nome do banco de dados
-      user:     'nortesystem',//usuário do banco de dados
+      user: 'nortesystem',//usuário do banco de dados
       password: '101485', //senha do usuário do banco de dados
       port: 5432,//porta do serviço do banco de dados
       host: 'localhost' //endereço do servidor do banco de dados
@@ -60,3 +60,5 @@ module.exports = {
     useNullAsDefault: true,
   }
 };
+
+

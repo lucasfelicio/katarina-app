@@ -5,7 +5,6 @@ import { Feather } from "@expo/vector-icons";
 import styles from './styles';
 import api from '../../services/api';
 import { Alert } from 'react-native';
-
 export default function resumo() {
   const route = useRoute();
   const navigation = useNavigation();
@@ -14,7 +13,6 @@ export default function resumo() {
   const valor_total = route.params.valor;
   const [venda, setVenda] = useState();
   const [vendaitens, setVendaitens] = useState();
-
   async function loadVenda() {
     await api.get('venda/resumo', { params: { id_venda, id_empresa: 1 } })
       .then((res) => {
@@ -51,7 +49,9 @@ export default function resumo() {
         renderItem={({ item: vitem }) => (
           <View style={styles.itens}>
             <View style={styles.boxTitulo}>
-              <Text style={styles.itemTitle}>{vitem.ite_001} - {vitem.mat_003}</Text>
+              <Text style={styles.itemTitle}>
+                {vitem.ite_001} - {vitem.mat_003}
+              </Text>
             </View>
             <View style={styles.boxValor}>
               <Text style={styles.itemValor}>

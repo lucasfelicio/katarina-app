@@ -1,33 +1,34 @@
-import React,{useState,useEffect} from 'react';
-import {View, Text, FlatList, TouchableOpacity} from 'react-native';
-import {Feather} from "@expo/vector-icons"; 
-import {useNavigation, useRoute} from '@react-navigation/native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { Feather } from "@expo/vector-icons";
+import { useNavigation, useRoute } from '@react-navigation/native';
 import styles from './styles';
 import api from '../../services/api';
-
-export default function Categorias(){
+export default function Categorias() {
     const navigation = useNavigation();
     const route = useRoute();
     const [categorias, setCategorias] = useState([]);
     const id_venda = route.params.id_venda;
-    function navigationBack(){
+    function navigationBack() {
         navigation.goBack()
     }
-    function navigationToProduto(categoria){
-        navigation.navigate('Produtos',{categoria,id_venda})
+    function navigationToProduto(categoria) {
+        navigation.navigate('Produtos', { categoria, id_venda })
     }
-    async function loadCategorias(){   
-        const response = await api.get('categorias', {params:{id_empresa:1}});
-        setCategorias(response.data)
+    async function loadCategorias() {
+        await api.get('categorias', { params: { id_empresa: 1 } })
+            .then(function (res) {
+                setCategorias(res.data)
+            })
     }
-    useEffect(()=>{
+    useEffect(() => {
         loadCategorias();
-    },[])
-    return(
+    }, [])
+    return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={navigationBack}>
-                    <Feather name="arrow-left" size={35} color={"#FFA500"}/>
+                    <Feather name="arrow-left" size={35} color={"#FFA500"} />
                 </TouchableOpacity>
                 <Text style={styles.headerText}>Voltar</Text>
             </View>
@@ -35,19 +36,27 @@ export default function Categorias(){
                 data={categorias}
                 style={styles.categoriaList}
                 keyExtractor={categoria => String(categoria.cat_001)}
-                showsVerticalScrollIndicator={false}      
-                renderItem={({ item: categoria }) =>(
-                    <TouchableOpacity onPress={() => navigationToProduto(categoria)}>
+                showsVerticalScrollIndicator={false}
+                renderItem={({ item: categoria }) => (
+                    <TouchableOpacity
+                        onPress={() => navigationToProduto(categoria)}
+                    >
                         <View style={styles.categoria}>
-                            <Text style={styles.categoriaTitle}>{categoria.cat_002}</Text>
-                            <Feather name="arrow-right" size={25} color={"#FFA500"}/>
-                        </View>                        
+                            <Text style={styles.categoriaTitle}>
+                                {categoria.cat_002}
+                            </Text>
+                            <Feather
+                                name="arrow-right" size={25} color={"#FFA500"}
+                            />
+                        </View>
                     </TouchableOpacity>
                 )}
             />
         </View>
     );
 }
+
+
 
 
 

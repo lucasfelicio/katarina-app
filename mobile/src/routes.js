@@ -13,8 +13,8 @@ import Produtos from './pages/Produtos';
 import Venda from './pages/Venda';
 import Resumo from './pages/ResumoVenda';
 
-export default function Routes(){
-    return(
+export default function Routes() {
+    return (
         <NavigationContainer>
             <AppStack.Navigator screenOptions={{ headerShown: false }}>
                 <AppStack.Screen name='Login' component={Login} />

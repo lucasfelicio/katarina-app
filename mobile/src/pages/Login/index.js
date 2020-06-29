@@ -8,12 +8,10 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 import logoImg from '../../assets/logo.png';
 import api from '../../services/api';
-
 export default function fLogin() {
     const navigation = useNavigation();
     const [login, setlogin] = useState();
     const [senha, setSenha] = useState();
-
     async function signIn() {
         await api.get('sessions', { params: { login, senha } })
             .then(function (res) {
@@ -23,10 +21,10 @@ export default function fLogin() {
             .catch((error) => {
                 Alert.alert('Atenção', error.response.data.descricao);
             })
-        // await AsyncStorage.multiSet([
-        //     ['@katarinaMobile:user_id',JSON.stringify(user.id)],
-        //     ['@katarinaMobile:user_name',JSON.stringify(user.user_name)],
-        // ]);
+        await AsyncStorage.multiSet([
+            ['@katarinaMobile:user_id', JSON.stringify(user.id)],
+            ['@katarinaMobile:user_name', JSON.stringify(user.user_name)],
+        ]);
     }
     function navigationToConfig() {
         navigation.navigate('Configuracao');
@@ -52,10 +50,15 @@ export default function fLogin() {
                     onChangeText={setSenha}
                     secureTextEntry={true}
                 />
-                <TouchableOpacity onPress={() => signIn()} style={styles.buttom}>
+                <TouchableOpacity
+                    onPress={() => signIn()}
+                    style={styles.buttom}
+                >
                     <Text style={styles.buttomText}>ENTRAR</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigationToConfig()} style={styles.settings}>
+                <TouchableOpacity
+                    onPress={() => navigationToConfig()} style={styles.settings}
+                >
                     <Feather name="settings" size={35} color={"#FFA500"} />
                 </TouchableOpacity>
             </View>
@@ -65,4 +68,7 @@ export default function fLogin() {
         </View>
     )
 }
+
+
+
 

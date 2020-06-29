@@ -17,13 +17,13 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         color: '#474A51',
     },
-    itemTitle: {
+    itemHeaderTitle: {
         justifyContent: 'center',
         alignItems: 'center',
         padding: 5,
-        backgroundColor: '#D3D3D3'
+        backgroundColor: '#D3D3D3',
     },
-    itemText: {
+    itemHeaderText: {
         fontSize: 17,
         color: '#474A51',
     },
@@ -71,6 +71,39 @@ export default StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold'
     },
+    lista: {
+        marginTop: 5,
+        marginBottom: 5,
+    },
+    itens: {
+        paddingHorizontal: 20,
+        backgroundColor: '#F2FDF2',
+        marginBottom: 2,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    boxTitulo: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '45%',
+    },
+    itemTitle: {
+        fontSize: 12,
+        color: '#41414d',
+        fontWeight: 'bold',
+    },
+    boxValor: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '50%'
+    },
+    itemValor: {
+        fontSize: 15,
+        color: '#41414d',
+    },
     bannerTotal: {
         backgroundColor: '#000',
         alignItems: 'center',
@@ -111,5 +144,5 @@ export default StyleSheet.create({
         color: '#FFF',
         fontSize: 18,
         fontWeight: 'bold'
-    }
+    },
 })

@@ -2,38 +2,38 @@ import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 export default StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
         paddingHorizontal: 20,
         paddingTop: Constants.statusBarHeight + 20,
     },
-    header:{
+    header: {
         flexDirection: 'row',
-        justifyContent:'space-between',
-        alignItems: 'center'           
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
-    headerText:{
+    headerText: {
         fontSize: 25,
         color: '#808080',
         fontWeight: "bold",
         fontStyle: "italic"
     },
-    inputs:{
+    inputs: {
         marginTop: 50,
-        padding: 10, 
+        padding: 10,
     },
-    title:{
+    title: {
         fontSize: 18,
         color: "#808080",
         fontWeight: "bold"
     },
-    input:{        
+    input: {
         fontSize: 15,
         padding: 3,
         borderRadius: 3,
         height: 45,
     },
-    buttom:{
+    buttom: {
         backgroundColor: '#FFA500',
         borderRadius: 8,
         height: 45,
@@ -41,9 +41,9 @@ export default StyleSheet.create({
         alignItems: 'center',
         marginTop: 20
     },
-    buttomText:{
+    buttomText: {
         color: '#fff',
         fontWeight: "bold",
-        fontSize:17
+        fontSize: 17
     },
 });
