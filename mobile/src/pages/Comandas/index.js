@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
     View, FlatList, Text,
-    TouchableOpacity, Alert, AsyncStorage
+    TouchableOpacity, Alert, AsyncStorage, RefreshControl
 } from 'react-native';
 import { Input } from 'react-native-elements';
 import { Feather } from "@expo/vector-icons";
@@ -11,11 +11,22 @@ import Dialog from 'react-native-dialog';
 import ButtonsBox from '../../components/buttonsBox'
 import styles from './styles';
 import api from '../../services/api';
+function wait(timeout) {
+    return new Promise(resolve => {
+        setTimeout(resolve, timeout);
+    });
+}
 export default function Comandas() {
     const navigation = useNavigation();
     const [comandas, setComandas] = useState();
     const [num_comanda, setNumComanda] = useState(0);
-    const [dialogVisible, setDialogVisible] = useState(false)
+    const [dialogVisible, setDialogVisible] = useState(false);
+    const [refreshing, setRefreshing] = React.useState(false);
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        loadComandas();
+        wait(1000).then(() => setRefreshing(false));
+    }, [refreshing]);
     async function loadComandas() {
         await api.get('venda', {
             params: { tipo: 'C', id_empresa: 1 }
@@ -39,7 +50,7 @@ export default function Comandas() {
             .getItem('@katarinaMobile:user_id');
         await api.post('venda',
             {
-                tipo: 'C', nro_comanda: num_comanda, nro_mesa: 0, id_empresa: 1,
+                tipo: 'C', nro_comanda: num_comanda, nro_mesa: 0, id_empresa: 1, id_usuario
             })
             .then(function (res) {
                 console.log(res.data)
@@ -58,6 +69,9 @@ export default function Comandas() {
     function showDialog() {
         setDialogVisible(true);
     };
+    function handleCancelar() {
+        setDialogVisible(false);
+    }
     function handleConfirmar() {
         setDialogVisible(false);
         abrirComanda();
@@ -81,6 +95,7 @@ export default function Comandas() {
                     onChangeText={text => setNumComanda(text)}
                 >
                 </Dialog.Input>
+                <Dialog.Button label="cancelar" onPress={() => handleCancelar()} />
                 <Dialog.Button label="confirmar" onPress={() => handleConfirmar()} />
             </Dialog.Container>
             <View style={styles.search}>
@@ -99,6 +114,11 @@ export default function Comandas() {
                 data={comandas}
                 keyExtractor={comanda => String(comanda.ven_001)}
                 showsVerticalScrollIndicator={false}
+                refreshControl={
+                    <RefreshControl refreshing={refreshing}
+                        onRefresh={onRefresh}
+                    />
+                }
                 renderItem={({ item: comanda }) => (
                     <TouchableOpacity
                         onPress={() => navigateToResumo(

@@ -29,8 +29,7 @@ module.exports = {
         }
     },
     async create(request, response) {
-        const id_usuario = request.headers.authorization;
-        const { tipo, nro_comanda, nro_mesa, id_empresa } = request.body;
+        const { tipo, nro_comanda, nro_mesa, id_empresa, id_usuario } = request.body;
         try {
             const [id] = await connection('venda')
                 .where('emp_001', id_empresa)
@@ -72,12 +71,11 @@ module.exports = {
         }
     },
     async createItem(request, response) {
-        const id_usuario = request.headers.authorization;
         const { id_empresa, id_venda, id_produto, quantidade, valor_unit,
-            valor_total, observacao, id_impressora } = request.body;
+            valor_total, observacao, id_impressora, id_usuario } = request.body;
 
         console.log(id_empresa, id_venda, id_produto, quantidade, valor_unit,
-            valor_total, observacao, id_impressora)
+            valor_total, observacao, id_impressora, id_usuario)
 
         try {
             const [item] = await connection('vendaitem').max('ite_001')

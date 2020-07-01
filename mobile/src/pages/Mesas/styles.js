@@ -24,10 +24,10 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center'
     },
-    vendaList: {
+    List: {
         marginTop: 10
     },
-    venda: {
+    mesa: {
         padding: 18,
         borderRadius: 8,
         backgroundColor: '#fff',
@@ -36,12 +36,12 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center'
     },
-    vendaTitle: {
+    mesaTitle: {
         fontSize: 16,
         color: '#41414d',
         fontWeight: 'bold'
     },
-    vendaValor: {
+    mesaValor: {
         fontSize: 16,
         color: '#737380'
     },

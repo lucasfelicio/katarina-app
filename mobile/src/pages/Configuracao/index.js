@@ -23,7 +23,7 @@ export default function config() {
         <TextInput
           style={styles.input}
           placeholder='Ex.: 1'
-          value={id_empresa}
+          value={'1'}
           onChangeText={setEmpresa}
           keyboardType={'numeric'}
         />
@@ -31,7 +31,7 @@ export default function config() {
         <TextInput
           style={styles.input}
           placeholder='Ex.: 192.168.0.1'
-          value={end_server}
+          value={'192.168.100.4'}
           onChangeText={setServer}
           keyboardType={'numeric'}
         />

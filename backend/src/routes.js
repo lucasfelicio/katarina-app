@@ -15,7 +15,6 @@ routes.get('/venda', Venda.read);
 routes.get('/venda/resumo', VendaResumo.read);
 
 routes.post('/venda', Venda.create);
-
 routes.post('/venda/item', Venda.createItem);
 
 module.exports = routes;
