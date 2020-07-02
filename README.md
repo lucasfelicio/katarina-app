@@ -43,4 +43,4 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para
 
 ---
 
-Feito by [Lucas Felício](https://github.com/lucasfelicio)
+By [Lucas Felício](https://github.com/lucasfelicio)
