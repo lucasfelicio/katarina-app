@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="DevRadar" title="#nortesystem" src=".github/logonortesystem.svg" width="200px" />
+    <img alt="DevRadar" title="#nortesystem" src=".github/logonortesystem.png" width="200px" />
 </h1>
 
 <h4 align="center">
@@ -21,7 +21,7 @@
 <br>
 
 <p align="center">
-  <img alt="Katarina Mobile" src=".github/splash.png" width="100%">
+  <img alt="Katarina Mobile" src=".github/splash.png" width="30%">
 </p>
 
 ## :rocket: Tecnologias
@@ -43,4 +43,4 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para
 
 ---
 
-Feito by (https://github.com/lucasfelicio)
+Feito by [Github](@lucasfelicio)
