@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="DevRadar" title="#nortesystem" src=".github/logonortesystem.png" width="200px" />
+    <img alt="DevRadar" title="#nortesystem" src=".github/logonortesystem.png" width="300px" />
 </h1>
 
 <h4 align="center">
@@ -43,4 +43,4 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para
 
 ---
 
-Feito by [Github](@lucasfelicio)
+Feito by [Lucas Felício](https://github.com/lucasfelicio)
