@@ -82,6 +82,12 @@ export default function resumo() {
             currency: 'BRL'
           }).format(valor_total)}</Text>
       </View>
+      <TouchableOpacity
+        style={styles.buttomAddItem}
+        onPress={()=> navigation.navigate('Categorias',{id_venda})}
+      >
+        <Text style={styles.titleButtomAddItem}>Adicionar item</Text>
+      </TouchableOpacity>
     </View>
   )
 }

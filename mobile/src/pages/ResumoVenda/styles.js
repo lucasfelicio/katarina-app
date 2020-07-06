@@ -81,5 +81,16 @@ export default StyleSheet.create({
     itemValor:{
       fontSize: 15,
       color: '#41414d', 
+    },
+    buttomAddItem:{
+      height: 50,
+      backgroundColor: '#FFA500',
+      justifyContent: 'center',
+      alignItems:'center'
+    },
+    titleButtomAddItem:{
+      color: '#FFF',
+      fontSize: 20,
+      fontWeight: 'bold'
     }
   })
