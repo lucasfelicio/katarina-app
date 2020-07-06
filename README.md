@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-  🚀 Katarina Mobile
+  :iphone: Katarina Mobile
 </h4>
 
 <p align="center">
@@ -24,7 +24,7 @@
   <img alt="Katarina Mobile" src=".github/splash.png" width="30%">
 </p>
 
-## :rocket: Tecnologias
+## :crystal_ball: Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
@@ -32,14 +32,16 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [React Native](https://facebook.github.io/react-native/)
 - [Expo](https://expo.io/)
 
-## 💻 Projeto
+## :mortar_board: Projeto
 
-O BeTheHero é um projeto que visa conectar pessoas que desejam fazer contribuições monetárias a ONG's (Organizações não governamentais) que precisam de ajuda.
+O Katarina Mobile é um projeto desenvolvido com intuito de cumprir os requisitos do desenvolvimento 
+do projeto de conclusão do autor. Este aplicativo foi projetado para ser executado exclusivamente no
+ambiente de produção do sistema Katarina, com as credenciais fornecidas por um supervisor. 
 
-## :memo: Licença
+## :scroll: Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
 ---
 
-By [Lucas Felício](https://github.com/lucasfelicio)
+By [Lucas Felício](https://github.com/lucasfelicio) :cactus:
