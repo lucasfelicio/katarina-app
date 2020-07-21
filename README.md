@@ -21,7 +21,7 @@
 <br>
 
 <p align="center">
-  <img alt="Katarina Mobile" src=".github/splash.png" width="30%">
+  <img alt="Katarina Mobile" src=".github/foldergit.png" width="30%">
 </p>
 
 ## :crystal_ball: Tecnologias
@@ -37,6 +37,9 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 O Katarina Mobile é um projeto desenvolvido com intuito de cumprir os requisitos do desenvolvimento 
 do projeto de conclusão do autor. Este aplicativo foi projetado para ser executado exclusivamente no
 ambiente de produção do sistema Katarina, com as credenciais fornecidas por um supervisor. 
+
+## :exclamation: Observações
+- Algumas implementações do aplciativo não estão completas. 
 
 ## :scroll: Licença
 
