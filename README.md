@@ -21,7 +21,7 @@
 <br>
 
 <p align="center">
-  <img alt="Katarina Mobile" src=".github/foldergit.png" width="30%">
+  <img alt="Katarina Mobile" src=".github/foldergit.png" width="100%">
 </p>
 
 ## :crystal_ball: Tecnologias
