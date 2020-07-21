@@ -35,11 +35,12 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## :mortar_board: Projeto
 
 O Katarina Mobile é um projeto desenvolvido com intuito de cumprir os requisitos do desenvolvimento 
-do projeto de conclusão do autor. Este aplicativo foi projetado para ser executado exclusivamente no
-ambiente de produção do sistema Katarina, com as credenciais fornecidas por um supervisor. 
+do projeto de trabalho de conclusão de curso do Centro Universitário São Lucas Ji-Paraná do curso de Sistemas de Informação. 
 
 ## :exclamation: Observações
+
 - Algumas implementações do aplciativo não estão completas. 
+- Este aplicativo foi projetado para ser executado exclusivamente no ambiente de produção do sistema Katarina, com as credenciais fornecidas por um supervisor.
 
 ## :scroll: Licença
 
