@@ -31,6 +31,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Node.js](https://nodejs.org/en/)
 - [React Native](https://facebook.github.io/react-native/)
 - [Expo](https://expo.io/)
+- [Insomnia](https://insomnia.rest/products/designer/)
 
 ## :mortar_board: Projeto
 
